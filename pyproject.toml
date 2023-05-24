@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "make-event"
+version = "0.1.0"
+description = ""
+authors = ["Michael Rodionov <rodionovspb9618@mail.ru>"]
+readme = "README.md"
+packages = [{include = "make_event"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "3.2"
+djangorestframework = "3.12"
+djangorestframework-simplejwt = "^5.2.2"
+django-environ = "^0.10.0"
+gunicorn = "^20.1.0"
+psycopg2-binary = "^2.9.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
