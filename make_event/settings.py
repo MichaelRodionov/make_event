@@ -76,18 +76,8 @@ AUTH_USER_MODEL = 'core.User'
 
 # ----------------------------------------------------------------
 # Database settings
-# DATABASES = {
-#     'default': env.db()
-# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
-    }
+    'default': env.db()
 }
 
 # ----------------------------------------------------------------

@@ -21,11 +21,13 @@ class OrganizationAdmin(admin.ModelAdmin):
 
     Attrs:
         - list_display: defines collection of fields to display
+        - list_filter: defines collection of fields to filter
         - search_fields: defines collection of fields to search
         - inlines: defines UserInLine
         - fieldsets: defines custom subsections
     """
     list_display = ('title', 'description', 'address', 'postcode')
+    list_filter = ('title',)
     search_fields = ('title',)
     inlines = [UserInLine]
 
