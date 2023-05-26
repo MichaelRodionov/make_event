@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.request import Request
@@ -5,12 +6,12 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from core.models import User
 from core.serializers import UserRegSerializer, UserAuthSerializer
 
 
 # ----------------------------------------------------------------
 # user views
+@extend_schema(tags=['User'])
 class UserRegView(CreateAPIView):
     """
     View to handle registration
@@ -20,7 +21,15 @@ class UserRegView(CreateAPIView):
     """
     serializer_class = UserRegSerializer
 
+    @extend_schema(
+        description="Create new user instance",
+        summary="Registrate user",
+    )
+    def post(self, request: Request, *args: tuple, **kwargs: dict) -> Response:
+        return super().post(request, *args, **kwargs)
 
+
+@extend_schema(tags=['User'])
 class UserAuthView(TokenObtainPairView):
     """
     View to handle authentication
@@ -30,6 +39,10 @@ class UserAuthView(TokenObtainPairView):
     """
     serializer_class = UserAuthSerializer
 
+    @extend_schema(
+        description="Authenticate user instance",
+        summary="Authenticate user",
+    )
     def post(self, request: Request, *args: tuple, **kwargs: dict) -> Response:
         """
         Method to redefine post logic
