@@ -44,3 +44,4 @@ services:
         condition: service_completed_successfully
     volumes:
       - ./:/event_app/
+      - .static:/event_app/static
